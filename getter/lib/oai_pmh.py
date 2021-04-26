@@ -1,6 +1,7 @@
 import logging
 
 from datetime import datetime, timedelta
+from getter.lib.values import COLLECTION_TO_DATESTAMP_FORMAT
 from getter.model.declarative import RawDocument
 from requests.exceptions import HTTPError
 from sickle import Sickle
@@ -20,7 +21,8 @@ class OAIAdapter:
         raw_doc.gathering_date = datetime.utcnow()
         raw_doc.gathering_source = self.source_name
         raw_doc.code = record.header.identifier
-        raw_doc.datestamp = datetime.strptime(record.header.datestamp, '%Y-%m-%d')
+        raw_doc.datestamp = datetime.strptime(record.header.datestamp,
+                                              COLLECTION_TO_DATESTAMP_FORMAT.get(self.collection, '%Y-%m-%d'))
         raw_doc.set_specs = record.header.setSpecs
 
         data = {}
