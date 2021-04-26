@@ -23,3 +23,7 @@ COLLECTION_TO_URL = {
     'ven': 'http://ve.scielo.org/oai/scielo-oai.php',
     'wid': 'https://westindies.scielo.org/oai/scielo-oai.php'
 }
+
+COLLECTION_TO_DATESTAMP_FORMAT = {
+    'pre': '%Y-%m-%dT%H:%M:%SZ'
+}
