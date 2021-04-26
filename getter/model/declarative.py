@@ -1,4 +1,4 @@
-from sqlalchemy import Column, VARCHAR, UniqueConstraint, INTEGER, DATE
+from sqlalchemy import Column, VARCHAR, UniqueConstraint, INTEGER
 from sqlalchemy.dialects.postgresql import JSON, TIMESTAMP, ARRAY
 from sqlalchemy.ext.declarative import declarative_base
 
