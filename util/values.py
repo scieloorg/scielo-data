@@ -28,3 +28,10 @@ COLLECTION_TO_URL = {
 COLLECTION_TO_DATESTAMP_FORMAT = {
     'pre': '%Y-%m-%dT%H:%M:%SZ'
 }
+
+METADATA_PREFIXES = [
+    'oai_dc',
+    'oai_dc_agris',
+    'oai_dc_openaire',
+    'oai_dc_scielo'
+]
