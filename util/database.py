@@ -1,6 +1,6 @@
 import logging
 
-from getter.model.declarative import RawDocument
+from model.declarative import RawDocument
 from sqlalchemy.exc import IntegrityError
 
 

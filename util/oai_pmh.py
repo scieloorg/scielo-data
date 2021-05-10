@@ -1,8 +1,8 @@
 import logging
 
 from datetime import datetime, timedelta
-from getter.lib.values import COLLECTION_TO_DATESTAMP_FORMAT
-from getter.model.declarative import RawDocument
+from util.values import COLLECTION_TO_DATESTAMP_FORMAT
+from model.declarative import RawDocument
 from requests.exceptions import HTTPError
 from sickle import Sickle
 from sickle.models import Record
@@ -42,7 +42,7 @@ class OAIClient:
         self.sickle = Sickle(url, max_retries=max_retries, verify=False)
         self.days_delta = days_delta
 
-    def get_records(self, from_date='', until_date=''):
+    def get_records(self, metadata_prefix='oai_dc_scielo', from_date='', until_date=''):
         try:
             from_date = datetime.strptime(from_date, '%Y-%m-%d')
             until_date = datetime.strptime(until_date, '%Y-%m-%d')
@@ -51,7 +51,7 @@ class OAIClient:
             from_date = until_date - timedelta(days=self.days_delta)
 
         try:
-            records = self.sickle.ListRecords(**{'metadataPrefix': 'oai_dc',
+            records = self.sickle.ListRecords(**{'metadataPrefix': metadata_prefix,
                                                  'from': from_date.strftime('%Y-%m-%d'),
                                                  'until': until_date.strftime('%Y-%m-%d')})
         except NoRecordsMatch:
