@@ -1,8 +1,8 @@
 import logging
 
 from datetime import datetime, timedelta
-from getter.lib.values import COLLECTION_TO_DATESTAMP_FORMAT
-from getter.model.declarative import RawDocument
+from util.values import COLLECTION_TO_DATESTAMP_FORMAT
+from model.declarative import RawDocument
 from requests.exceptions import HTTPError
 from sickle import Sickle
 from sickle.models import Record
