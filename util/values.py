@@ -21,7 +21,8 @@ COLLECTION_TO_URL = {
     'sza': 'http://www.scielo.org.za/oai/scielo-oai.php',
     'ury': 'http://www.scielo.edu.uy/oai/scielo-oai.php',
     'ven': 'http://ve.scielo.org/oai/scielo-oai.php',
-    'wid': 'https://westindies.scielo.org/oai/scielo-oai.php'
+    'wid': 'https://westindies.scielo.org/oai/scielo-oai.php',
+    'dev': 'http://0.0.0.0/oai/scielo-oai.php'
 }
 
 COLLECTION_TO_DATESTAMP_FORMAT = {
