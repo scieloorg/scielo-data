@@ -34,6 +34,8 @@ class OAIClient:
         self.collection = collection
         self.source_name = '-'.join(['oai', self.collection])
         self.sickle = Sickle(url, max_retries=max_retries, verify=False)
+        self.sickle.class_mapping['ListRecords'] = SciELORecord
+        self.sickle.class_mapping['GetRecord'] = SciELORecord
         self.days_delta = days_delta
 
     def get_records(self, metadata_prefix='oai_dc_scielo', from_date='', until_date=''):
