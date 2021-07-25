@@ -2,7 +2,7 @@ COLLECTION_TO_URL = {
     'arg': 'http://scielo.org.ar/oai/scielo-oai.php',
     'bol': 'http://www.scielo.org.bo/oai/scielo-oai.php',
     'nbr': '',
-    'scl': 'https://www.scielo.br/oai/scielo-oai.php',
+    'scl': 'https://old.scielo.br/oai/scielo-oai.php',
     'chl': '',
     'col': 'http://www.scielo.org.co/oai/scielo-oai.php',
     'cri': 'https://www.scielo.sa.cr/oai/scielo-oai.php',
