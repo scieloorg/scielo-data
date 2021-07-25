@@ -3,7 +3,7 @@ import logging
 from datetime import datetime, timedelta
 from util.values import COLLECTION_TO_DATESTAMP_FORMAT
 from model.declarative import RawDocument
-from requests.exceptions import HTTPError
+from model.oai_dc_scielo import SciELORecord
 from sickle import Sickle
 from sickle.models import Record
 from sickle.oaiexceptions import NoRecordsMatch
@@ -20,17 +20,11 @@ class OAIAdapter:
 
         raw_doc.gathering_date = datetime.utcnow()
         raw_doc.gathering_source = self.source_name
-        raw_doc.code = record.header.identifier
-        raw_doc.datestamp = datetime.strptime(record.header.datestamp,
-                                              COLLECTION_TO_DATESTAMP_FORMAT.get(self.collection, '%Y-%m-%d'))
-        raw_doc.set_specs = record.header.setSpecs
-
-        data = {}
-        for k in record.metadata.keys():
-            data[k] = record.metadata.get(k, '')
-
+        raw_doc.identifier = record.header.identifier
+        raw_doc.date = datetime.strptime(record.header.date, COLLECTION_TO_DATESTAMP_FORMAT.get(self.collection, '%Y-%m-%d'))
+        raw_doc.is_part_of = record.header.is_part_of
         raw_doc.collection = self.collection
-        raw_doc.data = data
+        raw_doc.data = record.metadata
 
         return raw_doc
 
@@ -40,7 +34,13 @@ class OAIClient:
         self.collection = collection
         self.source_name = '-'.join(['oai', self.collection])
         self.sickle = Sickle(url, max_retries=max_retries, verify=False)
+        self.sickle.class_mapping['ListRecords'] = SciELORecord
+        self.sickle.class_mapping['GetRecord'] = SciELORecord
         self.days_delta = days_delta
+
+    def get_record(self, metadata_prefix='oai_dc_scielo', identifier=None):
+        if identifier:
+            return [self.sickle.GetRecord(**{'metadataPrefix': metadata_prefix, 'identifier': identifier})]
 
     def get_records(self, metadata_prefix='oai_dc_scielo', from_date='', until_date=''):
         try:
@@ -51,19 +51,11 @@ class OAIClient:
             from_date = until_date - timedelta(days=self.days_delta)
 
         try:
-            records = self.sickle.ListRecords(**{'metadataPrefix': metadata_prefix,
-                                                 'from': from_date.strftime('%Y-%m-%d'),
-                                                 'until': until_date.strftime('%Y-%m-%d')})
+            records = self.sickle.ListRecords(**{'metadataPrefix': metadata_prefix, 'from': from_date.strftime('%Y-%m-%d'), 'until': until_date.strftime('%Y-%m-%d')})
         except NoRecordsMatch:
             logging.info('No records found')
             return []
-        except (ConnectionError,
-                ConnectionResetError,
-                ConnectionAbortedError,
-                ConnectionRefusedError,
-                HTTPError,
-                MaxRetryError,
-                TimeoutError) as e:
+        except (ConnectionError, ConnectionResetError, ConnectionAbortedError, ConnectionRefusedError, MaxRetryError, TimeoutError) as e:
             logging.error(e)
             return []
 

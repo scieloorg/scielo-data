@@ -8,22 +8,20 @@ def upsert_raw(session, raw_document):
     try:
         session.add(raw_document)
         session.commit()
-        logging.info('Saved %s' % raw_document.code)
+        logging.info('Saved %s' % raw_document.identifier)
 
     except IntegrityError:
         session.rollback()
         existing_record = session.query(RawDocument).filter(RawDocument.gathering_source == raw_document.gathering_source,
                                                             RawDocument.collection == raw_document.collection,
-                                                            RawDocument.code == raw_document.code).one()
+                                                            RawDocument.identifier == raw_document.identifier).one()
 
-        if existing_record.datestamp < raw_document.datestamp:
+        if existing_record.date < raw_document.date:
             try:
                 session.delete(existing_record)
                 session.flush()
-
                 session.add(raw_document)
                 session.commit()
-                logging.info('Updated %s' % raw_document.code)
-
+                logging.info('Updated %s' % raw_document.identifier)
             except:
                 session.rollback()
