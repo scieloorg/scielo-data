@@ -3,7 +3,7 @@ import logging
 from datetime import datetime, timedelta
 from util.values import COLLECTION_TO_DATESTAMP_FORMAT
 from model.declarative import RawDocument
-from requests.exceptions import HTTPError
+from model.oai_dc_scielo import SciELORecord
 from sickle import Sickle
 from sickle.models import Record
 from sickle.oaiexceptions import NoRecordsMatch
@@ -38,6 +38,10 @@ class OAIClient:
         self.sickle.class_mapping['GetRecord'] = SciELORecord
         self.days_delta = days_delta
 
+    def get_record(self, metadata_prefix='oai_dc_scielo', identifier=None):
+        if identifier:
+            return [self.sickle.GetRecord(**{'metadataPrefix': metadata_prefix, 'identifier': identifier})]
+
     def get_records(self, metadata_prefix='oai_dc_scielo', from_date='', until_date=''):
         try:
             from_date = datetime.strptime(from_date, '%Y-%m-%d')
@@ -47,19 +51,11 @@ class OAIClient:
             from_date = until_date - timedelta(days=self.days_delta)
 
         try:
-            records = self.sickle.ListRecords(**{'metadataPrefix': metadata_prefix,
-                                                 'from': from_date.strftime('%Y-%m-%d'),
-                                                 'until': until_date.strftime('%Y-%m-%d')})
+            records = self.sickle.ListRecords(**{'metadataPrefix': metadata_prefix, 'from': from_date.strftime('%Y-%m-%d'), 'until': until_date.strftime('%Y-%m-%d')})
         except NoRecordsMatch:
             logging.info('No records found')
             return []
-        except (ConnectionError,
-                ConnectionResetError,
-                ConnectionAbortedError,
-                ConnectionRefusedError,
-                HTTPError,
-                MaxRetryError,
-                TimeoutError) as e:
+        except (ConnectionError, ConnectionResetError, ConnectionAbortedError, ConnectionRefusedError, MaxRetryError, TimeoutError) as e:
             logging.error(e)
             return []
 
