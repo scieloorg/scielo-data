@@ -20,17 +20,11 @@ class OAIAdapter:
 
         raw_doc.gathering_date = datetime.utcnow()
         raw_doc.gathering_source = self.source_name
-        raw_doc.code = record.header.identifier
-        raw_doc.datestamp = datetime.strptime(record.header.datestamp,
-                                              COLLECTION_TO_DATESTAMP_FORMAT.get(self.collection, '%Y-%m-%d'))
-        raw_doc.set_specs = record.header.setSpecs
-
-        data = {}
-        for k in record.metadata.keys():
-            data[k] = record.metadata.get(k, '')
-
+        raw_doc.identifier = record.header.identifier
+        raw_doc.date = datetime.strptime(record.header.date, COLLECTION_TO_DATESTAMP_FORMAT.get(self.collection, '%Y-%m-%d'))
+        raw_doc.is_part_of = record.header.is_part_of
         raw_doc.collection = self.collection
-        raw_doc.data = data
+        raw_doc.data = record.metadata
 
         return raw_doc
 
