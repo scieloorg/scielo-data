@@ -3,6 +3,8 @@ SciELO Data is a repository that contains scripts responsible for obtaining, cle
 
 
 ## How to install
+
+### Using system environment
 ```shell
 # Create a virtual environment
 virtualenv -p python3.9 .venv
@@ -12,6 +14,12 @@ source .venv/bin/activate
 
 # Install dependencies and binary files
 python setup.py install
+```
+
+### Using docker
+```shell
+# Build the local image
+docker build --tag scl-data-raw1:dev .
 ```
 
 
@@ -47,10 +55,29 @@ _Settings_
 
 _Command_
 ```shell
+# Using system environment (change the parameters -o, -f, -r, -p and -n as needed)
 getter \
 -o https://old.scielo.br/oai/scielo-oai.php \
 -f 2020-04-01 -u 2020-05-01 \
--r mongodb://0.0.0.0:27017/scielo_data.raw \
+-r mongodb://user:pass@host:port/scielo_data.raw \
+-p oai_dc_scielo \
+-n oai-old-scl
+```
+
+```shell
+# Using docker local image (change the parameters -o, -f, -r, -p and -n as needed)
+docker run --rm --name sdr_1 scl-data-raw1:dev getter \
+-o https://old.scielo.br/oai/scielo-oai.php \
+-f 2020-04-01 -u 2020-05-01 \
+-r mongodb://user:pass@host:port/scielo_data.raw \
+-p oai_dc_scielo \
+-n oai-old-scl
+
+# Using docker official image (change the parameters -o, -f, -r, -p and -n as needed)
+docker run --rm --name sdr_1 scieloorg/scielo-data-raw:latest getter \
+-o https://old.scielo.br/oai/scielo-oai.php \
+-f 2020-04-01 -u 2020-05-01 \
+-r mongodb://user:pass@host:port/scielo_data.raw \
 -p oai_dc_scielo \
 -n oai-old-scl
 ```
