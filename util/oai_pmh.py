@@ -1,11 +1,8 @@
 import logging
 
 from datetime import datetime, timedelta
-from util.values import COLLECTION_TO_DATESTAMP_FORMAT
-from model.declarative import RawDocument
 from model.oai_dc_scielo import SciELORecord
 from sickle import Sickle
-from sickle.models import Record
 from sickle.oaiexceptions import NoRecordsMatch
 from urllib3.exceptions import MaxRetryError
 
@@ -40,3 +37,15 @@ class OAIClient:
             return []
 
         return records
+
+    def record_to_dict(self, record: SciELORecord):
+        object = {}
+
+        object['gathering_date'] = datetime.utcnow()
+        object['gathering_source'] = self.source_name
+        object['identifier'] = record.header.identifier
+        object['date'] = record.header.date
+        object['is_part_of'] = record.header.is_part_of
+        object['metadata'] = record.get_metadata().get('metadata', {})
+
+        return object
