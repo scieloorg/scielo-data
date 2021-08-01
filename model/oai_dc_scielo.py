@@ -3,6 +3,7 @@ import xml.parsers.expat
 import xmltodict
 
 from lxml import etree
+from lxml.etree import SerialisationError
 from sickle._compat import PY3
 from sickle.models import Record, Header
 
@@ -54,5 +55,8 @@ class SciELORecord(Record):
         try:
             return xmltodict.parse(xml_input=etree.tostring(xml_metadata), process_namespaces=False)
         except xml.parsers.expat.ExpatError as e:
+            logging.error(e)
+            return {}
+        except SerialisationError as e:
             logging.error(e)
             return {}
