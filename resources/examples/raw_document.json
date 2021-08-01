@@ -1,0 +1,873 @@
+[
+  {
+    "_id": {"$oid": "6106e89f2f5cca97b4c70095"},
+    "date": "1998-09-21",
+    "gathering_date": {"$date": "2021-08-01T18:31:59.422Z"},
+    "gathering_source": "oai-old-scl",
+    "identifier": "oai:scielo:S0100-879X1998000900009",
+    "is_part_of": ["0100-879X"],
+    "metadata": {
+      "@xmlns": "http://www.openarchives.org/OAI/2.0/",
+      "@xmlns:dc": "http://purl.org/dc/elements/1.1/",
+      "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "journal": {
+        "issn": [
+          {
+            "@publication-format": "print",
+            "#text": "0100-879X"
+          },
+          {
+            "@publication-format": "online",
+            "#text": "1414-431X"
+          }
+        ],
+        "journal-title": "Brazilian Journal of Medical and Biological Research",
+        "named-content": {
+          "@content-type": "siglum",
+          "#text": "bjmbr"
+        },
+        "subject": ["BIOLOGICAL SCIENCES", "HEALTH SCIENCES"],
+        "volume": "31",
+        "number": "9",
+        "date": {
+          "@date-type": "pubdate",
+          "#text": "19980900"
+        }
+      },
+      "dc:language": "en",
+      "dc:type": "article",
+      "dc:format": "text/html",
+      "dc:rights": "info:eu-repo/semantics/openAccess",
+      "date": [
+        {
+          "@date-type": "received-date",
+          "#text": "1998-04-13"
+        },
+        {
+          "@date-type": "accepted-date",
+          "#text": "1998-06-29"
+        }
+      ],
+      "article-title": {
+        "@xml:lang": "en",
+        "#text": "Methylmercury intoxication and histochemical demonstration of NADPH-diaphorase activity in the striate cortex of adult cats"
+      },
+      "fpage": "1157",
+      "lpage": "1161",
+      "abstract": {
+        "@xml:lang": "en",
+        "#text": "The effects of methylmercury (MeHg) on histochemical demonstration of the NADPH-diaphorase (NADPH-d) activity in the striate cortex were studied in 4 adult cats. Two animals were used as control. The contaminated animals received 50 ml milk containing 0.42 µg MeHg and 100 g fish containing 0.03 µg MeHg daily for 2 months. The level of MeHg in area 17 of intoxicated animals was 3.2 µg/g wet weight brain tissue. Two cats were perfused 24 h after the last dose (group 1) and the other animals were perfused 6 months later (group 2). After microtomy, sections were processed for NADPHd histochemistry procedures using the malic enzyme method. Dendritic branch counts were performed from camera lucida drawings for control and intoxicated animals (N = 80). Average, standard deviation and Student t-test were calculated for each data group. The concentrations of mercury (Hg) in milk, fish and brain tissue were measured by acid digestion of samples, followed by reduction of total Hg in the digested sample to metallic Hg using stannous chloride followed by atomic fluorescence analysis. Only group 2 revealed a reduction of the neuropil enzyme activity and morphometric analysis showed a reduction in dendritic field area and in the number of distal dendrite branches of the NADPHd neurons in the white matter (P&lt;0.05). These results suggest that NADPHd neurons in the white matter are more vulnerable to the long-term effects of MeHg than NADPHd neurons in the gray matter."
+      },
+      "kwd": [
+        {
+          "@xml:lang": "en",
+          "#text": "NADPH-dehydrogenase"
+        },
+        {
+          "@xml:lang": "en",
+          "#text": "visual cortex"
+        },
+        {
+          "@xml:lang": "en",
+          "#text": "neurotoxicity"
+        },
+        {
+          "@xml:lang": "en",
+          "#text": "neuropil"
+        },
+        {
+          "@xml:lang": "en",
+          "#text": "mercury"
+        }
+      ],
+      "contrib-group": {
+        "contrib": [
+          {
+            "@contrib-type": "author",
+            "name": "R.B.",
+            "surname": "Oliveira",
+            "xref": {
+              "@ref-type": "aff",
+              "@rid": "A01"
+            }
+          },
+          {
+            "@contrib-type": "author",
+            "name": "W.",
+            "surname": "Gomes-Leal",
+            "xref": {
+              "@ref-type": "aff",
+              "@rid": "A02"
+            }
+          },
+          {
+            "@contrib-type": "author",
+            "name": "J.L.M.",
+            "surname": "do-Nascimento",
+            "xref": {
+              "@ref-type": "aff",
+              "@rid": "A03"
+            }
+          },
+          {
+            "@contrib-type": "author",
+            "name": "C.W.",
+            "surname": "Picanço-Diniz",
+            "xref": {
+              "@ref-type": "aff",
+              "@rid": "A02"
+            }
+          }
+        ]
+      },
+      "aff": [
+        {
+          "@id": "A01",
+          "institution": "Universidade Federal do Pará"
+        },
+        {
+          "@id": "A02"
+        },
+        {
+          "@id": "A03",
+          "institution": "Universidade Federal do Pará"
+        }
+      ],
+      "ref-list": {
+        "ref": [
+          {
+            "@id": "1",
+            "element-citation": {
+              "@publication-type": "book",
+              "collab-group": {
+                "@collab-group-type": "author",
+                "#text": "WHO"
+              },
+              "source": {
+                "@xml:lang": "en",
+                "#text": "IPCS, Enviromental Health Criteria 118."
+              },
+              "year": "1991",
+              "publisher-name": "World Health Organization",
+              "publisher-loc": {
+                "city": "Geneva"
+              }
+            }
+          },
+          {
+            "@id": "2",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Methylmercury in astrocytes - What possible significance"
+              },
+              "person-group": {
+                "@person-group-type": "analytic",
+                "name": "M",
+                "surname": "Aschner"
+              },
+              "source": {
+                "@xml:lang": "",
+                "#text": "Neurotoxicology"
+              },
+              "volume": "17",
+              "page-range": "93-106",
+              "year": "1996",
+              "issn": "0161-813X"
+            }
+          },
+          {
+            "@id": "3",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Metallothioneins in brain - The role in physiology and pathology"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "M",
+                  "surname": "Aschner"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "MG",
+                  "surname": "Cherian"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "CD",
+                  "surname": "Klaassen"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "RD",
+                  "surname": "Palmiter"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "JC",
+                  "surname": "Erickson"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "AI",
+                  "surname": "Bush"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Toxicology and Applied Pharmacology"
+              },
+              "volume": "142",
+              "page-range": "229-242",
+              "year": "1997",
+              "issn": "0041-008X"
+            }
+          },
+          {
+            "@id": "4",
+            "element-citation": {
+              "@publication-type": "book",
+              "person-group": [
+                {
+                  "@person-group-type": "monographic-person",
+                  "name": "M",
+                  "surname": "Aschner"
+                },
+                {
+                  "@person-group-type": "monographic-person",
+                  "name": "H",
+                  "surname": "Kimelberg"
+                }
+              ],
+              "source": {
+                "@xml:lang": "en",
+                "#text": "The Role of Glia in Neurotoxicity."
+              },
+              "year": "1996",
+              "publisher-name": "CRC Press, Times Mirror International Publishers Ltd.,",
+              "publisher-loc": {
+                "city": "New York"
+              }
+            }
+          },
+          {
+            "@id": "5",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "The toxicology of mercury"
+              },
+              "person-group": {
+                "@person-group-type": "analytic",
+                "name": "TW",
+                "surname": "Clarkson"
+              },
+              "source": {
+                "@xml:lang": "",
+                "#text": "Critical Reviews in Clinical Laboratory Sciences"
+              },
+              "volume": "34",
+              "page-range": "369-403",
+              "year": "1997"
+            }
+          },
+          {
+            "@id": "6",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Metabolism of methylmercury in the brain and its toxicological significance"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "NK",
+                  "surname": "Mottet"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "ME",
+                  "surname": "Vahter"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "JS",
+                  "surname": "Charleston"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "LT",
+                  "surname": "Friberg"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Metal Ions in Biological Systems"
+              },
+              "volume": "34",
+              "page-range": "371-403",
+              "year": "1997"
+            }
+          },
+          {
+            "@id": "7",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "The solitary active cells. Histochemical demonstration of damage-resistant nerve cells with a TPH-diaphorase reaction"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "E",
+                  "surname": "Thomas"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "AGE",
+                  "surname": "Pearse"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Acta Neuropathologica"
+              },
+              "volume": "3",
+              "page-range": "238-249",
+              "year": "1964"
+            }
+          },
+          {
+            "@id": "8",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Selective sparing of a class of striatal neurons in Huntington's disease"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "RJ",
+                  "surname": "Ferrante"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "NW",
+                  "surname": "Kowall"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "MF",
+                  "surname": "Beal"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "Jr EP",
+                  "surname": "Richardson"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "ED",
+                  "surname": "Bird"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "JB",
+                  "surname": "Martin"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Science"
+              },
+              "volume": "230",
+              "page-range": "561-563",
+              "year": "1985",
+              "issn": "0036-8075"
+            }
+          },
+          {
+            "@id": "9",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Demonstration of a unique population of neurons with NADPH-diaphorase histochemistry"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "U",
+                  "surname": "Scherer-Singler"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "SR",
+                  "surname": "Vincent"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "H",
+                  "surname": "Kimura"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "FG",
+                  "surname": "McGeer"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Journal of Neuroscience Methods"
+              },
+              "volume": "9",
+              "page-range": "229-234",
+              "year": "1983",
+              "issn": "0165-0270"
+            }
+          },
+          {
+            "@id": "10",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Neuronal NADPH-diaphorase is a nitric oxide synthase"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "BT",
+                  "surname": "Hope"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "GJ",
+                  "surname": "Michael"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "KM",
+                  "surname": "Knigge"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "SR",
+                  "surname": "Vincent"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Proceedings of the National Academy of Sciences, USA"
+              },
+              "volume": "88",
+              "page-range": "2811-2814",
+              "year": "1991",
+              "issn": "0027-8424"
+            }
+          },
+          {
+            "@id": "11",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Gases as biological messengers: Nitric oxide and carbon monoxide in the brain"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "TM",
+                  "surname": "Dawson"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "SH",
+                  "surname": "Snyder"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Journal of Neuroscience"
+              },
+              "volume": "14",
+              "page-range": "5147-5159",
+              "year": "1994",
+              "issn": "0270-6474"
+            }
+          },
+          {
+            "@id": "12",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Nitric oxide synthase and neuronal NADPH-diaphorase are identical in brain and peripheral tissues"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "TM",
+                  "surname": "Dawson"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "DS",
+                  "surname": "Bredt"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "M",
+                  "surname": "Fotuhi"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "P",
+                  "surname": "Hwang"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "SH",
+                  "surname": "Snyder"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Proceedings of the National Academy of Sciences, USA"
+              },
+              "volume": "88",
+              "page-range": "7797-7801",
+              "year": "1991",
+              "issn": "0027-8424"
+            }
+          },
+          {
+            "@id": "13",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Nitric oxide and nitric oxide synthase: biology, pathology, localization"
+              },
+              "person-group": {
+                "@person-group-type": "analytic",
+                "name": "G",
+                "surname": "Wolf"
+              },
+              "source": {
+                "@xml:lang": "",
+                "#text": "Histology and Histopathology"
+              },
+              "volume": "12",
+              "page-range": "251-261",
+              "year": "1997"
+            }
+          },
+          {
+            "@id": "14",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Distribution of reduced nicotinamide adenine dinucleotide phosphate (NADPH) diaphorase-positive cells and fibers in the cat central nervous system"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "K",
+                  "surname": "Mizukaua"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "PL",
+                  "surname": "McGeer"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "SR",
+                  "surname": "Vincent"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "EG",
+                  "surname": "McGeer"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Journal of Comparative Neurology"
+              },
+              "volume": "279",
+              "page-range": "281-311",
+              "year": "1989",
+              "issn": "0021-9967"
+            }
+          },
+          {
+            "@id": "15",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "GABAergic neocortical neurons are resistant to NMDA receptor-mediated injury"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "ES",
+                  "surname": "Tecoma"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "W",
+                  "surname": "Choi"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Neurology"
+              },
+              "volume": "39",
+              "page-range": "676-682",
+              "year": "1989",
+              "issn": "0028-3878"
+            }
+          },
+          {
+            "@id": "16",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Neurons in rat cerebral cortex that synthesize nitric oxide: NADPH-diaphorase histochemistry, NOS immunocytochemistry, and colocalization with GABA"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "JG",
+                  "surname": "Valtschanoff"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "RJ",
+                  "surname": "Weinberg"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "VN",
+                  "surname": "Kharazia"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "HHHW",
+                  "surname": "Schmidt"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Neuroscience Letters"
+              },
+              "volume": "157",
+              "page-range": "157-161",
+              "year": "1993",
+              "issn": "0304-3940"
+            }
+          },
+          {
+            "@id": "17",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Distribution of metallothionein in the human central nervous system"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "HG",
+                  "surname": "Blauwgeers"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "PA",
+                  "surname": "Sillevis-Smitt"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "Jong JA",
+                  "surname": "De"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "D",
+                  "surname": "Troost"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Glia"
+              },
+              "volume": "8",
+              "page-range": "62-70",
+              "year": "1993",
+              "issn": "0894-1491"
+            }
+          },
+          {
+            "@id": "18",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Nitric oxide synthase in the visual cortex of monocular monkeys as revealed by light and electron microscopic immunocytochemistry"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "C",
+                  "surname": "Aoki"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "S",
+                  "surname": "Fenstemaker"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "M",
+                  "surname": "Lubin"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "GG",
+                  "surname": "Go"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Brain Research"
+              },
+              "volume": "620",
+              "page-range": "97-113",
+              "year": "1993",
+              "issn": "0006-8993"
+            }
+          },
+          {
+            "@id": "19",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Knockout of glutamate transporters reveals a major role for astroglial transport in excitoxicity and clearance of glutamate"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "JD",
+                  "surname": "Rothstein"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "M",
+                  "surname": "Dykes-Hoberg"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "CA",
+                  "surname": "Pardo"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "LA",
+                  "surname": "Bristol"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "L",
+                  "surname": "Jin"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "RW",
+                  "surname": "Kunci"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "Y",
+                  "surname": "Kanai"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "MA",
+                  "surname": "Hediger"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "Y",
+                  "surname": "Wang"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "JP",
+                  "surname": "Schielk"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "DF",
+                  "surname": "Welty"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Neuron"
+              },
+              "volume": "16",
+              "page-range": "675-686",
+              "year": "1996",
+              "issn": "0896-6273"
+            }
+          },
+          {
+            "@id": "20",
+            "element-citation": {
+              "@publication-type": "journal",
+              "article-title": {
+                "@xml:lang": "en",
+                "#text": "Effects of mercurials on ligand- and voltage-gated ion channels: a review"
+              },
+              "person-group": [
+                {
+                  "@person-group-type": "analytic",
+                  "name": "JE",
+                  "surname": "Sorois"
+                },
+                {
+                  "@person-group-type": "analytic",
+                  "name": "WD",
+                  "surname": "Atchison"
+                }
+              ],
+              "source": {
+                "@xml:lang": "",
+                "#text": "Neurotoxicology"
+              },
+              "volume": "17",
+              "page-range": "63-84",
+              "year": "1996",
+              "issn": "0161-813X"
+            }
+          }
+        ]
+      }
+    }
+  }
+]

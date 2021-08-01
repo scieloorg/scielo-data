@@ -1,42 +1,19 @@
 import logging
 
 from datetime import datetime, timedelta
-from util.values import COLLECTION_TO_DATESTAMP_FORMAT
-from model.declarative import RawDocument
 from model.oai_dc_scielo import SciELORecord
 from sickle import Sickle
-from sickle.models import Record
 from sickle.oaiexceptions import NoRecordsMatch
 from urllib3.exceptions import MaxRetryError
 
 
-class OAIAdapter:
-    def __init__(self, collection):
-        self.collection = collection
-        self.source_name = '-'.join(['oai', collection])
-
-    def get_raw(self, record: Record):
-        raw_doc = RawDocument()
-
-        raw_doc.gathering_date = datetime.utcnow()
-        raw_doc.gathering_source = self.source_name
-        raw_doc.identifier = record.header.identifier
-        raw_doc.date = datetime.strptime(record.header.date, COLLECTION_TO_DATESTAMP_FORMAT.get(self.collection, '%Y-%m-%d'))
-        raw_doc.is_part_of = record.header.is_part_of
-        raw_doc.collection = self.collection
-        raw_doc.data = record.metadata
-
-        return raw_doc
-
-
 class OAIClient:
-    def __init__(self, collection, url, days_delta=30, max_retries=3):
-        self.collection = collection
-        self.source_name = '-'.join(['oai', self.collection])
+    def __init__(self, url, source_name, days_delta=30, max_retries=3):
         self.sickle = Sickle(url, max_retries=max_retries, verify=False)
         self.sickle.class_mapping['ListRecords'] = SciELORecord
         self.sickle.class_mapping['GetRecord'] = SciELORecord
         self.days_delta = days_delta
+        self.source_name = source_name
 
     def get_record(self, metadata_prefix='oai_dc_scielo', identifier=None):
         if identifier:
@@ -60,3 +37,15 @@ class OAIClient:
             return []
 
         return records
+
+    def record_to_dict(self, record: SciELORecord):
+        object = {}
+
+        object['gathering_date'] = datetime.utcnow()
+        object['gathering_source'] = self.source_name
+        object['identifier'] = record.header.identifier
+        object['date'] = record.header.date
+        object['is_part_of'] = record.header.is_part_of
+        object['metadata'] = record.get_metadata().get('metadata', {})
+
+        return object
