@@ -11,13 +11,12 @@ from urllib3.exceptions import MaxRetryError
 
 
 class OAIClient:
-    def __init__(self, collection, url, days_delta=30, max_retries=3):
-        self.collection = collection
-        self.source_name = '-'.join(['oai', self.collection])
+    def __init__(self, url, source_name, days_delta=30, max_retries=3):
         self.sickle = Sickle(url, max_retries=max_retries, verify=False)
         self.sickle.class_mapping['ListRecords'] = SciELORecord
         self.sickle.class_mapping['GetRecord'] = SciELORecord
         self.days_delta = days_delta
+        self.source_name = source_name
 
     def get_record(self, metadata_prefix='oai_dc_scielo', identifier=None):
         if identifier:
