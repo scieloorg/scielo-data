@@ -1,5 +1,5 @@
-# SciELO Data
-SciELO Data is a repository that contains scripts responsible for obtaining, cleaning, normalizing and merging scholarlry data from the SciELO Network.
+# SciELO NW
+SciELO NW is a repository that contains scripts responsible for obtaining scholarly data from the SciELO Network.
 
 
 ## How to install
@@ -19,21 +19,20 @@ python setup.py install
 ### Using docker
 ```shell
 # Build the local image
-docker build --tag scl-data-raw1:dev .
+docker build --tag scieloorg/scielo-nw .
 ```
 
 
 ## Requirements
 1. **Mongo Database** to store the collected data
-2. **Relational Database** to store the cleaned, normalized, and merged versions of the data
-3. **OAI-PMH Provider** that supports the metadata prefix **OAI DC SciELO** 
+2. **OAI-PMH Provider** with support to the metadata prefix **OAI DC SciELO**
 
 
 ## Optional environment variables
 ```shell
 # Set the following environment variables is optional (you could pass these arguments through command line while calling the getter - see Section Help_
 export BULK_SIZE=10
-export URI_RAW_DATA=mongodb://user:pass@localhost:27000/database.raw
+export URI_RAW_DATA=mongodb://user:pass@localhost:port/database.raw
 export OAI_ADDRESS=https://old.scielo.br/oai/scielo-oai.php
 export SOURCE_NAME=oai-old-scl
 ```
@@ -44,7 +43,7 @@ export SOURCE_NAME=oai-old-scl
 ### Getter
 Getter is the module responsible for obtaining documents' metadata (incluiding its cited references) from the SciELO OAI-PMH providers.
 
-**Example 1: collectig data from the Old SciELO OAI-PMH Provider and storing it in a local Mongo database**
+**Example 1: collecting data from the Old SciELO OAI-PMH Provider and storing it in a local Mongo database**
 
 _Settings_
 - OAI-PMH Provider: Old SciELO Brazil
