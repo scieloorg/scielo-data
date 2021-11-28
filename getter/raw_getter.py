@@ -3,7 +3,10 @@ import logging
 import os
 
 from datetime import datetime
-from util.database import get_mongo_collection
+from util.storage_impl import (
+    StorageClientDatabase,
+    StorageClientFile,
+)
 from util.oai_pmh import OAIClient
 from util.values import METADATA_PREFIXES
 
