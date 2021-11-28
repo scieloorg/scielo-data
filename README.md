@@ -29,14 +29,6 @@ docker build --tag scieloorg/scielo-nw .
 2. **OAI-PMH Provider** with support to the metadata prefix **OAI DC SciELO**
 
 
-## Optional environment variables
-```shell
-# Set the following environment variables is optional (you could pass these arguments through command line while calling the getter - see Section Help_
-export BULK_SIZE=10
-export URI_RAW_DATA=mongodb://user:pass@localhost:port/database.raw
-export OAI_ADDRESS=https://old.scielo.br/oai/scielo-oai.php
-export SOURCE_NAME=oai-old-scl
-```
 
 
 ## How to use
@@ -110,5 +102,11 @@ optional arguments:
 
 
 **Raw data format**
+## Optional environment variables
+Setting the following environment variables is optional. You could pass these arguments through command line while calling the getter - see Section Help.
 
-See [`resources/examples/raw_document.json`](resources/examples/raw_document.json) to check the data's storing format.
+Variable | Default value
+---------|--------------
+SCIELO_NW_BULK_SIZE|10
+SCIELO_NW_OAI_ADDRESS|https://old.scielo.br/oai/scielo-oai.php
+SCIELO_NW_SOURCE_NAME|oai-old-scl
