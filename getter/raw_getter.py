@@ -25,6 +25,27 @@ def main():
     parser.add_argument('-m', '--max_retries', default=3, type=int, help='Número máximo de tentativas de coleta no Provedor OAI-PMH')
     parser.add_argument('-i', '--identifier', help='Código de documento (formato oai:scielo:<PID>)')
 
+    parser.add_argument(
+        '-f', 
+        '--from_date',
+        default='',
+        help='Data de processamento até a qual os dados serão considerados para coleta (formato YYYY-MM-DD)',
+    )
+
+    parser.add_argument(
+        '-u', 
+        '--until_date', 
+        default=datetime.now().strftime('%Y-%m-%d'), 
+        help='Data de processamento a partir da qual os dados serão coletados (formato YYYY-MM-DD)',
+    )
+
+    parser.add_argument(
+        '-d', 
+        '--days_delta', 
+        default=3, 
+        type=int, 
+        help='Número de dias a ser considerado na coleta de dados - é útil quando um dos parâmetros from e until não é informado.',
+    )
     params = parser.parse_args()
 
     logging.basicConfig(level=logging.DEBUG, format='[%(asctime)s] %(levelname)s %(message)s', datefmt='%d/%b/%Y %H:%M:%S')
