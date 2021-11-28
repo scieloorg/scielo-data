@@ -12,7 +12,8 @@ virtualenv -p python3.9 .venv
 # Access the virtual enviroment
 source .venv/bin/activate
 
-# Install dependencies and binary files
+# Install dependencies and packages
+pip install -r requirements.txt
 python setup.py install
 ```
 
