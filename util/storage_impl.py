@@ -20,3 +20,24 @@ class StorageClientDatabase(StorageClient):
 
     def close(self):
         ...
+
+
+class StorageClientFile(StorageClient):
+    def open(self, output_path):
+        self._client = self._open_file(output_path)
+
+    def _open_file(self, output_path):
+        if os.path.exists(output_path):
+            raise FileExistsError
+
+        try:
+            return open(output_path, 'w')
+        except:
+            raise
+
+    def save(self, data):
+        for i in data:
+            self._client.write(str(i) + '\n')
+
+    def close(self):
+        self._client.close()
