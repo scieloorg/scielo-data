@@ -20,7 +20,9 @@ python setup.py install
 ### Using docker
 ```shell
 # Build the local image
-docker build --tag scieloorg/scielo-nw .
+docker build --tag scieloorg/scielo-nw:0.2.2 .
+
+# Create a .env.prod to store the required environment variables
 ```
 
 
@@ -42,7 +44,7 @@ _Settings_
 - Metadata prefix: OAI DC SciELO
 - Source name: oai-old-scielo
 
-_Command_
+_Command: example 1 - storage mode database_
 ```bash
 # Using system environment (change the parameters -o, -f, -r, -p and -n as needed)
 getter \
@@ -54,37 +56,38 @@ getter \
 ```
 
 ```bash
+# Using docker local image (change the parameters -o, -f, -r, -p and -n as needed)
+docker run --rm \
+  scieloorg/scielo_nw:0.2.2 \
+  getter \
+  -o https://old.scielo.br/oai/scielo-oai.php \
+  -f 2020-04-01 -u 2020-05-01 \
+  -r mongodb://user:pass@host:port/scielo_data.raw \
+  -p oai_dc_scielo \
+  -n oai-old-scl
+```
+
+_Command: example 2 - storage mode json_
+```bash
 # Using system environment, storage mode equals to json, and ommiting default parameters (default protocolo: oai_dc_scielo, default provider: old SciELO Brazil)
 getter \
-  -f 2020-04-01
-  -u 2020-05-01
-  --storage_mode json
+  -f 2020-04-01 \
+  -u 2020-05-01 \
+  --storage_mode json \
   --output collected_data.jsonl
 ```
 
 ```bash
 # Using docker local image (change the parameters -o, -f, -r, -p and -n as needed)
-docker run --rm scieloorg/scielo_nw \
+docker run --rm \
+  -v /home/user/data:/app/data
+  scieloorg/scielo_nw:0.2.2 \
   getter \
-  -o https://old.scielo.br/oai/scielo-oai.php \
-  -f 2020-04-01 -u 2020-05-01 \
-  -r mongodb://user:pass@host:port/scielo_data.raw \
-  -p oai_dc_scielo \
-  -n oai-old-scl
+  -f 2020-04-01 \
+  -u 2020-05-01 \
+  --storage_mode json \
+  --output /app/data/collected_data.jsonl
 ```
-
-```bash
-# Using docker official image (change the parameters -o, -f, -r, -p and -n as needed)
-docker run --rm scieloorg/scielo_nw \
-  getter \
-  -o https://old.scielo.br/oai/scielo-oai.php \
-  -f 2020-04-01 -u 2020-05-01 \
-  -r mongodb://user:pass@host:port/scielo_data.raw \
-  -p oai_dc_scielo \
-  -n oai-old-scl
-```
-
-
 
 _Help_
 ```bash
@@ -123,11 +126,13 @@ See file [`resources/examples/raw_document.json`](resources/examples/raw_documen
 
 ---
 
-## Optional environment variables
-Setting the following environment variables is optional. You could pass these arguments through command line while calling the getter - see Section Help.
+## Environment variables
+Setting the SCIEL_NW_* environment variables is optional. You could pass them through command line while calling the getter - see Section Help.
 
 Variable | Default value
 ---------|--------------
 SCIELO_NW_BULK_SIZE|10
 SCIELO_NW_OAI_ADDRESS|https://old.scielo.br/oai/scielo-oai.php
 SCIELO_NW_SOURCE_NAME|oai-old-scl
+MONGO_INITDB_ROOT_USERNAME|
+MONGO_INITDB_ROOT_PASSWORD|
