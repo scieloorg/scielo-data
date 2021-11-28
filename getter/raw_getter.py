@@ -57,6 +57,7 @@ def main():
     parser.add_argument(
         '--storage_mode',
         choices=['database', 'json'],
+        required=True,
         help='Modo de persistência dos dados coletados',
     )
     
