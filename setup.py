@@ -12,12 +12,12 @@ install_requires = [
     'xmltodict==0.12.0']
 
 setup(
-    name='scielo-data',
-    version='0.2.1',
+    name='scielo-nw',
+    version='0.2.2',
     author="SciELO",
     author_email="scielo-dev@googlegroups.com",
     license="BSD",
-    url="https://github.com/scieloorg/scielo-data",
+    url="https://github.com/scieloorg/scielo-nw",
     keywords='scholarly data gather',
     maintainer_email='rafael.pezzuto@gmail.com',
     packages=find_packages(),
