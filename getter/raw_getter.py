@@ -71,7 +71,16 @@ def main():
     logging.basicConfig(level=params.logging_level, format='[%(asctime)s] %(levelname)s %(message)s', datefmt='%d/%b/%Y %H:%M:%S')
 
     oai_client = OAIClient(url=params.oai_address, source_name=SOURCE_NAME, max_retries=params.max_retries, days_delta=params.days_delta)
-    raw_client = get_mongo_collection(params.uri_raw_data)
+  
+    if params.storage_mode == 'database':
+        # instancia client em modo de banco de dados
+        raw_client = StorageClientDatabase()
+        raw_client.open(params.output)
+
+    elif params.storage_mode == 'json':
+        # instancia client em modo de arquivo
+        raw_client = StorageClientFile()
+        raw_client.open(params.output)
 
     if params.identifier:
         records = oai_client.get_record(metadata_prefix=params.metadata_prefix, identifier=params.identifier)
