@@ -24,8 +24,8 @@ docker build --tag scieloorg/scielo-nw .
 ```
 
 
-## Requirements
-1. **Mongo Database** to store the collected data
+### Application requirements
+1. **Mongo Database** to store the collected data (optional if the storage_mode is `json`)
 2. **OAI-PMH Provider** with support to the metadata prefix **OAI DC SciELO**
 
 
