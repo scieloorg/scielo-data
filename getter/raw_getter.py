@@ -11,10 +11,10 @@ from util.oai_pmh import OAIClient
 from util.values import METADATA_PREFIXES
 
 
-BULK_SIZE = int(os.environ.get('BULK_SIZE', '10'))
-URI_RAW_DATA = os.environ.get('URI_RAW_DATA', 'mongodb://user:pass@localhost:27000/database.raw')
-OAI_ADDRESS = os.environ.get('OAI_ADDRESS', 'https://old.scielo.br/oai/scielo-oai.php')
-SOURCE_NAME = os.environ.get('SOURCE_NAME', 'oai-old-scl')
+LOGGING = os.environ.get('SCIELO_NW_LOGGING_LEVEL', 'INFO')
+BULK_SIZE = int(os.environ.get('SCIELO_NW_BULK_SIZE', '10'))
+OAI_ADDRESS = os.environ.get('SCIELO_NW_OAI_ADDRESS', 'https://old.scielo.br/oai/scielo-oai.php')
+SOURCE_NAME = os.environ.get('SCIELO_NW_SOURCE_NAME', 'oai-old-scl')
 
 
 def main():
