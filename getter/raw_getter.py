@@ -46,6 +46,13 @@ def main():
         type=int, 
         help='Número de dias a ser considerado na coleta de dados - é útil quando um dos parâmetros from e until não é informado.',
     )
+
+    parser.add_argument(
+        '-l',
+        '--logging_level',
+        default=LOGGING,
+        choices=['INFO', 'WARNING', 'DEBUG'],
+        help='Modo de logging'),
     params = parser.parse_args()
 
     logging.basicConfig(level=logging.DEBUG, format='[%(asctime)s] %(levelname)s %(message)s', datefmt='%d/%b/%Y %H:%M:%S')
