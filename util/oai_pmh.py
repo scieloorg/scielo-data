@@ -5,6 +5,7 @@ from model.oai_dc_scielo import SciELORecord
 from sickle import Sickle
 from sickle.oaiexceptions import NoRecordsMatch
 from urllib3.exceptions import MaxRetryError
+from requests.exceptions import HTTPError
 
 
 class OAIClient:
@@ -34,7 +35,15 @@ class OAIClient:
         except NoRecordsMatch:
             logging.info('No records found')
             return []
-        except (ConnectionError, ConnectionResetError, ConnectionAbortedError, ConnectionRefusedError, MaxRetryError, TimeoutError) as e:
+        except (
+            ConnectionError, 
+            ConnectionResetError, 
+            ConnectionAbortedError, 
+            ConnectionRefusedError, 
+            MaxRetryError, 
+            HTTPError,
+            TimeoutError,
+        ) as e:
             logging.error(e)
             return []
 
