@@ -93,7 +93,9 @@ def main():
         objects.append(oai_client.record_to_dict(r))
 
         if len(objects) == BULK_SIZE:
-            raw_client.insert_many(objects)
+            raw_client.save(objects)
             objects = []
 
-    raw_client.insert_many(objects)
+    if objects:
+        raw_client.save(objects)
+    raw_client.close()
