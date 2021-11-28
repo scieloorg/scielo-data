@@ -53,6 +53,19 @@ def main():
         default=LOGGING,
         choices=['INFO', 'WARNING', 'DEBUG'],
         help='Modo de logging'),
+
+    parser.add_argument(
+        '--storage_mode',
+        choices=['database', 'json'],
+        help='Modo de persistência dos dados coletados',
+    )
+    
+    parser.add_argument(
+        '--output',
+        required=True,
+        help='Caminho dos dados armazenados: uma string de conexão com banco de dados ou um caminho no disco',
+    )
+
     params = parser.parse_args()
 
     logging.basicConfig(level=logging.DEBUG, format='[%(asctime)s] %(levelname)s %(message)s', datefmt='%d/%b/%Y %H:%M:%S')
