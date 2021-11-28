@@ -5,6 +5,7 @@ from model.oai_dc_scielo import SciELORecord
 from sickle import Sickle
 from sickle.oaiexceptions import NoRecordsMatch
 from urllib3.exceptions import MaxRetryError
+from requests.exceptions import HTTPError
 
 
 class OAIClient:
@@ -27,12 +28,22 @@ class OAIClient:
             until_date = datetime.now()
             from_date = until_date - timedelta(days=self.days_delta)
 
+        logging.info(f'Collecting data from {from_date.strftime("%Y-%m-%d")} to {until_date.strftime("%Y-%m-%d")}')
+
         try:
             records = self.sickle.ListRecords(**{'metadataPrefix': metadata_prefix, 'from': from_date.strftime('%Y-%m-%d'), 'until': until_date.strftime('%Y-%m-%d')})
         except NoRecordsMatch:
             logging.info('No records found')
             return []
-        except (ConnectionError, ConnectionResetError, ConnectionAbortedError, ConnectionRefusedError, MaxRetryError, TimeoutError) as e:
+        except (
+            ConnectionError, 
+            ConnectionResetError, 
+            ConnectionAbortedError, 
+            ConnectionRefusedError, 
+            MaxRetryError, 
+            HTTPError,
+            TimeoutError,
+        ) as e:
             logging.error(e)
             return []
 
