@@ -19,10 +19,6 @@ SOURCE_NAME = os.environ.get('SCIELO_NW_SOURCE_NAME', 'oai-old-scl')
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f', '--from_date',default='',help='Data de processamento até a qual os dados serão considerados para coleta (formato YYYY-MM-DD)')
-    parser.add_argument('-u', '--until_date', default=datetime.now().strftime('%Y-%m-%d'), help='Data de processamento a partir da qual os dados serão coletados (formato YYYY-MM-DD)')
-    parser.add_argument('-d', '--days_delta', default=30, type=int, help='Número de dias a ser considerado na coleta de dados - é útil quando um dos parâmetros from e until não é informado.')
-    parser.add_argument('-r', '--uri_raw_data', default=URI_RAW_DATA, help='String de conexão com banco de dados MongoDB para persistência dos dados coletados (e.g. mongodb://user:pass@localhost:27000/database.raw)')
     parser.add_argument('-o', '--oai_address', default=OAI_ADDRESS, help='Endereço do site do Provedor OAI-PMH (e.g. https://old.scielo.br/oai/scielo-oai.php)')
     parser.add_argument('-n', '--source_name', default=SOURCE_NAME, help='Nome da fonte de dados (e.g. oai-old-scl)')
     parser.add_argument('-p', '--metadata_prefix', default='oai_dc_scielo', choices=METADATA_PREFIXES, help='Prefixo de metadados')
