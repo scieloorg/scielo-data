@@ -27,6 +27,8 @@ class OAIClient:
             until_date = datetime.now()
             from_date = until_date - timedelta(days=self.days_delta)
 
+        logging.info(f'Collecting data from {from_date.strftime("%Y-%m-%d")} to {until_date.strftime("%Y-%m-%d")}')
+
         try:
             records = self.sickle.ListRecords(**{'metadataPrefix': metadata_prefix, 'from': from_date.strftime('%Y-%m-%d'), 'until': until_date.strftime('%Y-%m-%d')})
         except NoRecordsMatch:
