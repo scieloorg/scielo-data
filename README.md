@@ -127,12 +127,10 @@ See file [`resources/examples/raw_document.json`](resources/examples/raw_documen
 ---
 
 ## Environment variables
-Setting the SCIEL_NW_* environment variables is optional. You could pass them through command line while calling the getter - see Section Help.
-
 Variable | Default value
 ---------|--------------
 SCIELO_NW_BULK_SIZE|10
+SCIELO_NW_DB_CONNECTION|mongodb://user:pass@host:port/database.collection
+SCIELO_NW_LOGGING_LEVEL|INFO
 SCIELO_NW_OAI_ADDRESS|https://old.scielo.br/oai/scielo-oai.php
-SCIELO_NW_SOURCE_NAME|oai-old-scl
-MONGO_INITDB_ROOT_USERNAME|
-MONGO_INITDB_ROOT_PASSWORD|
+SCIELO_NW_SOURCE_NAME|oai-scl
