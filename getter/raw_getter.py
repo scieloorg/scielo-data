@@ -2,19 +2,21 @@ import argparse
 import logging
 import os
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from util.storage_impl import (
     StorageClientDatabase,
     StorageClientFile,
 )
 from util.oai_pmh import OAIClient
 from util.values import METADATA_PREFIXES
+from util import exceptions
 
 
 LOGGING = os.environ.get('SCIELO_NW_LOGGING_LEVEL', 'INFO')
 BULK_SIZE = int(os.environ.get('SCIELO_NW_BULK_SIZE', '10'))
 OAI_ADDRESS = os.environ.get('SCIELO_NW_OAI_ADDRESS', 'https://old.scielo.br/oai/scielo-oai.php')
-SOURCE_NAME = os.environ.get('SCIELO_NW_SOURCE_NAME', 'oai-old-scl')
+SOURCE_NAME = os.environ.get('SCIELO_NW_SOURCE_NAME', 'oai-scl')
+DB_CONNECTION = os.environ.get('SCIELO_NW_DB_CONNECTION', '')
 
 
 def main():
@@ -28,23 +30,15 @@ def main():
     parser.add_argument(
         '-f', 
         '--from_date',
-        default='',
+        default=(datetime.now() - timedelta(days=5)).strftime('%Y-%m-%d'),
         help='Data de processamento até a qual os dados serão considerados para coleta (formato YYYY-MM-DD)',
     )
 
     parser.add_argument(
         '-u', 
         '--until_date', 
-        default=datetime.now().strftime('%Y-%m-%d'), 
+        default=datetime.now().strftime('%Y-%m-%d'),
         help='Data de processamento a partir da qual os dados serão coletados (formato YYYY-MM-DD)',
-    )
-
-    parser.add_argument(
-        '-d', 
-        '--days_delta', 
-        default=3, 
-        type=int, 
-        help='Número de dias a ser considerado na coleta de dados - é útil quando um dos parâmetros from e until não é informado.',
     )
 
     parser.add_argument(
@@ -62,21 +56,29 @@ def main():
     )
     
     parser.add_argument(
+        '--db_connection',
+        default=DB_CONNECTION,
+        help='Uma string de conexão com banco de dados',
+    )
+
+    parser.add_argument(
         '--output',
-        required=True,
-        help='Caminho dos dados armazenados: uma string de conexão com banco de dados ou um caminho no disco',
+        default='.'.join(['obtained', datetime.utcnow().strftime('%Y-%m-%d.%H%M%S%f'), 'json']),
+        help='Um caminho no disco em que os dados serão armazenados',
     )
 
     params = parser.parse_args()
 
     logging.basicConfig(level=params.logging_level, format='[%(asctime)s] %(levelname)s %(message)s', datefmt='%d/%b/%Y %H:%M:%S')
 
-    oai_client = OAIClient(url=params.oai_address, source_name=SOURCE_NAME, max_retries=params.max_retries, days_delta=params.days_delta)
+    oai_client = OAIClient(url=params.oai_address, source_name=params.source_name, max_retries=params.max_retries)
   
     if params.storage_mode == 'database':
         # instancia client em modo de banco de dados
+        if not params.db_connection:
+            raise exceptions.DatabaseConnectionUndefinedError("String de conexão de banco de dados indefinida")
         raw_client = StorageClientDatabase()
-        raw_client.open(params.output)
+        raw_client.open(params.db_connection)
 
     elif params.storage_mode == 'json':
         # instancia client em modo de arquivo
