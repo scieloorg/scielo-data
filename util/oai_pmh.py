@@ -4,16 +4,16 @@ from datetime import datetime, timedelta
 from model.oai_dc_scielo import SciELORecord
 from sickle import Sickle
 from sickle.oaiexceptions import NoRecordsMatch
+from util import exceptions
 from urllib3.exceptions import MaxRetryError
 from requests.exceptions import HTTPError
 
 
 class OAIClient:
-    def __init__(self, url, source_name, days_delta=30, max_retries=3):
+    def __init__(self, url, source_name, max_retries=3):
         self.sickle = Sickle(url, max_retries=max_retries, verify=False)
         self.sickle.class_mapping['ListRecords'] = SciELORecord
         self.sickle.class_mapping['GetRecord'] = SciELORecord
-        self.days_delta = days_delta
         self.source_name = source_name
 
     def get_record(self, metadata_prefix='oai_dc_scielo', identifier=None):
@@ -25,8 +25,10 @@ class OAIClient:
             from_date = datetime.strptime(from_date, '%Y-%m-%d')
             until_date = datetime.strptime(until_date, '%Y-%m-%d')
         except ValueError:
-            until_date = datetime.now()
-            from_date = until_date - timedelta(days=self.days_delta)
+            raise exceptions.InvalidDateFormatError('Formato de datas inválido')
+
+        if from_date >= until_date:
+            raise exceptions.InvalidDateRangeError('Data de início é maior ou igual a data de fim')
 
         logging.info(f'Collecting data from {from_date.strftime("%Y-%m-%d")} to {until_date.strftime("%Y-%m-%d")}')
 
