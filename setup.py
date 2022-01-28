@@ -13,7 +13,7 @@ install_requires = [
 
 setup(
     name='scielo-nw',
-    version='0.2.3',
+    version='0.2.4',
     author="SciELO",
     author_email="scielo-dev@googlegroups.com",
     license="BSD",
