@@ -28,7 +28,7 @@ class StorageClientFile(StorageClient):
 
     def _open_file(self, output_path):
         if os.path.exists(output_path):
-            raise FileExistsError
+            raise FileExistsError(f'{output_path} já existe e não será sobrescrito')
 
         try:
             return open(output_path, 'w')
