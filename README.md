@@ -20,7 +20,7 @@ python setup.py install
 ### Using docker
 ```shell
 # Build the local image
-docker build --tag scieloorg/scielo-nw:0.2.2 .
+docker build --tag scieloorg/scielo-nw:0.2.5 .
 
 # Create a .env.prod to store the required environment variables
 ```
@@ -46,59 +46,73 @@ _Settings_
 
 _Command: example 1 - storage mode database_
 ```bash
-# Using system environment (change the parameters -o, -f, -r, -p and -n as needed)
+# Using system environment
 getter \
-  -o https://old.scielo.br/oai/scielo-oai.php \
-  -f 2020-04-01 -u 2020-05-01 \
-  -r mongodb://user:pass@host:port/scielo_data.raw \
-  -p oai_dc_scielo \
-  -n oai-old-scl
+  --collection scl \
+  --source_name oai-pmh-scl
+  --metadata_prefix oai_dc_scielo \
+  --storage_mode database \
+  --db_connection mongodb://user:pass@host:port/database \
+  --oai_address http://old.scielo.br/oai/scielo-oai.php \
+  --from_date 2020-04-01 \
+  --until_date 2020-05-01 \
 ```
 
 ```bash
-# Using docker local image (change the parameters -o, -f, -r, -p and -n as needed)
+# Using docker image
 docker run --rm \
-  scieloorg/scielo_nw:0.2.2 \
+  scieloorg/scielo_nw:0.2.5 \
   getter \
-  -o https://old.scielo.br/oai/scielo-oai.php \
-  -f 2020-04-01 -u 2020-05-01 \
-  -r mongodb://user:pass@host:port/scielo_data.raw \
-  -p oai_dc_scielo \
-  -n oai-old-scl
+  --collection scl \
+  --source_name oai-pmh-scl
+  --metadata_prefix oai_dc_scielo \
+  --storage_mode database \
+  --db_connection mongodb://user:pass@host:port/database \
+  --oai_address http://old.scielo.br/oai/scielo-oai.php \
+  --from_date 2020-04-01 \
+  --until_date 2020-05-01 \
 ```
 
 _Command: example 2 - storage mode json_
 ```bash
-# Using system environment, storage mode equals to json, and ommiting default parameters (default protocolo: oai_dc_scielo, default provider: old SciELO Brazil)
+# Using system environment
 getter \
-  -f 2020-04-01 \
-  -u 2020-05-01 \
+  --collection scl \
+  --source_name oai-pmh-scl \
+  --metadata_prefix oai_dc_scielo \
   --storage_mode json \
-  --output collected_data.jsonl
+  --oai_address http://old.scielo.br/oai/scielo-oai.php
+  --from_date 2020-04-01 \
+  --until_date 2020-04-02
 ```
 
 ```bash
-# Using docker local image (change the parameters -o, -f, -r, -p and -n as needed)
+# Using docker image
 docker run --rm \
   -v /home/user/data:/app/data
-  scieloorg/scielo_nw:0.2.2 \
+  scieloorg/scielo_nw:0.2.5 \
   getter \
-  -f 2020-04-01 \
-  -u 2020-05-01 \
+  --collection scl \
+  --source_name oai-pmh-scl
+  --metadata_prefix oai_dc_scielo \
   --storage_mode json \
-  --output /app/data/collected_data.jsonl
+  --oai_address http://old.scielo.br/oai/scielo-oai.php \
+  --from_date 2020-04-01 \
+  --until_date 2020-05-01 \
 ```
 
 _Help_
 ```bash
 # getter --help
-usage: getter [-h] [-o OAI_ADDRESS] [-n SOURCE_NAME] [-p {oai_dc,oai_dc_agris,oai_dc_openaire,oai_dc_scielo}] [-m MAX_RETRIES] [-i IDENTIFIER] [-f FROM_DATE]
-              [-u UNTIL_DATE] [-d DAYS_DELTA] [-l {INFO,WARNING,DEBUG}] [--storage_mode {database,json}] --output OUTPUT
+usage: raw_getter.py [-h] -o OAI_ADDRESS -c COLLECTION -n SOURCE_NAME [-p {oai_dc,oai_dc_agris,oai_dc_openaire,oai_dc_scielo}] [-m MAX_RETRIES] [-i IDENTIFIER] [-f FROM_DATE]
+                     [-u UNTIL_DATE] [-l {INFO,WARNING,DEBUG}] [--storage_mode {database,json}] [--db_connection DB_CONNECTION] [--output OUTPUT]
 
 optional arguments:
   -h, --help            show this help message and exit
   -o OAI_ADDRESS, --oai_address OAI_ADDRESS
                         Endereço do site do Provedor OAI-PMH (e.g. https://old.scielo.br/oai/scielo-oai.php)
+  -c COLLECTION, --collection COLLECTION
+                        Acrônimo da coleção (e.g. scl, ury)
   -n SOURCE_NAME, --source_name SOURCE_NAME
                         Nome da fonte de dados (e.g. oai-old-scl)
   -p {oai_dc,oai_dc_agris,oai_dc_openaire,oai_dc_scielo}, --metadata_prefix {oai_dc,oai_dc_agris,oai_dc_openaire,oai_dc_scielo}

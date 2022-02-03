@@ -24,9 +24,14 @@ COLLECTION_TO_URL = {
     'wid': 'https://westindies.scielo.org/oai/scielo-oai.php',
 }
 
+OAI_DC = 'oai_dc'
+OAI_DC_AGRIS = 'oai_dc_agris'
+OAI_DC_OPENAIRE = 'oai_dc_openaire'
+OAI_DC_SCIELO = 'oai_dc_scielo'
+
 METADATA_PREFIXES = [
-    'oai_dc',
-    'oai_dc_agris',
-    'oai_dc_openaire',
-    'oai_dc_scielo'
+    OAI_DC,
+    OAI_DC_AGRIS,
+    OAI_DC_OPENAIRE,
+    OAI_DC_SCIELO,
 ]
