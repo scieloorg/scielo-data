@@ -17,7 +17,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-o', '--oai_address', default=OAI_ADDRESS, help='Endereço do site do Provedor OAI-PMH (e.g. https://old.scielo.br/oai/scielo-oai.php)')
     parser.add_argument('-n', '--source_name', default=SOURCE_NAME, help='Nome da fonte de dados (e.g. oai-old-scl)')
-    parser.add_argument('-p', '--metadata_prefix', default='oai_dc_scielo', choices=METADATA_PREFIXES, help='Prefixo de metadados')
+    parser.add_argument('-p', '--metadata_prefix', default='oai_dc', choices=values.METADATA_PREFIXES, help='Prefixo de metadados')
     parser.add_argument('-m', '--max_retries', default=3, type=int, help='Número máximo de tentativas de coleta no Provedor OAI-PMH')
     parser.add_argument('-i', '--identifier', help='Código de documento (formato oai:scielo:<PID>)')
 
@@ -45,7 +45,7 @@ def main():
     parser.add_argument(
         '--storage_mode',
         choices=['database', 'json'],
-        required=True,
+        default='json',
         help='Modo de persistência dos dados coletados',
     )
     
