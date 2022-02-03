@@ -1,12 +1,9 @@
 import logging
 
-from datetime import datetime, timedelta
+from datetime import datetime
 from model.oai_dc_scielo import SciELORecord
-from sickle import Sickle
-from sickle.oaiexceptions import NoRecordsMatch
-from util import exceptions
-from urllib3.exceptions import MaxRetryError
-from requests.exceptions import HTTPError
+from sickle import oaiexceptions, Sickle
+from util import exceptions, values
 
 
 class OAIClient:
@@ -30,12 +27,12 @@ class OAIClient:
             from_date = datetime.strptime(from_date, '%Y-%m-%d')
             until_date = datetime.strptime(until_date, '%Y-%m-%d')
         except ValueError:
-            raise exceptions.InvalidDateFormatError('Formato de datas inválido')
+            raise exceptions.InvalidDateFormatError('Formato de datas inválido.')
 
         if from_date >= until_date:
-            raise exceptions.InvalidDateRangeError('Data de início é maior ou igual a data de fim')
+            raise exceptions.InvalidDateRangeError('Data de início é maior ou igual a data de fim.')
 
-        logging.info(f'Collecting data from {from_date.strftime("%Y-%m-%d")} to {until_date.strftime("%Y-%m-%d")}')
+        logging.info(f'Obtendo dados do período de {from_date.strftime("%Y-%m-%d")} a {until_date.strftime("%Y-%m-%d")}')
 
         try:
             records = self.sickle.ListRecords(**{'metadataPrefix': metadata_prefix, 'from': from_date.strftime('%Y-%m-%d'), 'until': until_date.strftime('%Y-%m-%d')})
