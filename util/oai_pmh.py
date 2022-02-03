@@ -60,3 +60,19 @@ class OAIClient:
         self._parse_metadata(record.metadata, parsed_record)
 
         return parsed_record
+
+    def _parse_header(self, header, parsed_record):
+        if self.metadata_prefix == values.OAI_DC:
+            parsed_record['date'] = header.datestamp
+            parsed_record['is_part_of'] = header.setSpecs
+
+        elif self.metadata_prefix == values.OAI_DC_SCIELO:
+            parsed_record['date'] = header.date
+            parsed_record['is_part_of'] = header.is_part_of        
+
+    def _parse_metadata(self, metadata, parsed_record):
+        if self.metadata_prefix == values.OAI_DC:
+            parsed_record['metadata'] = metadata
+
+        elif self.metadata_prefix == values.OAI_DC_SCIELO:
+            parsed_record['metadata'] = metadata.get('metadata', {})
