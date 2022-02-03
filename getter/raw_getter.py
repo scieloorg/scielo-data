@@ -3,13 +3,7 @@ import logging
 import os
 
 from datetime import datetime, timedelta
-from util.storage_impl import (
-    StorageClientDatabase,
-    StorageClientFile,
-)
-from util.oai_pmh import OAIClient
-from util.values import METADATA_PREFIXES
-from util import exceptions
+from util import exceptions, storage_impl, oai_pmh, values
 
 
 LOGGING = os.environ.get('SCIELO_NW_LOGGING_LEVEL', 'INFO')
