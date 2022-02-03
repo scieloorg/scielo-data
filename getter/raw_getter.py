@@ -13,8 +13,9 @@ DB_CONNECTION = os.environ.get('SCIELO_NW_DB_CONNECTION', '')
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-o', '--oai_address', default=OAI_ADDRESS, help='Endereço do site do Provedor OAI-PMH (e.g. https://old.scielo.br/oai/scielo-oai.php)')
-    parser.add_argument('-n', '--source_name', default=SOURCE_NAME, help='Nome da fonte de dados (e.g. oai-old-scl)')
+    parser.add_argument('-o', '--oai_address', required=True, help='Endereço do site do Provedor OAI-PMH (e.g. https://old.scielo.br/oai/scielo-oai.php)')
+    parser.add_argument('-c', '--collection', required=True, help='Acrônimo da coleção (e.g. scl, ury)')
+    parser.add_argument('-n', '--source_name', required=True, help='Nome da fonte de dados (e.g. oai-old-scl)')
     parser.add_argument('-p', '--metadata_prefix', default='oai_dc', choices=values.METADATA_PREFIXES, help='Prefixo de metadados')
     parser.add_argument('-m', '--max_retries', default=3, type=int, help='Número máximo de tentativas de coleta no Provedor OAI-PMH')
     parser.add_argument('-i', '--identifier', help='Código de documento (formato oai:scielo:<PID>)')
