@@ -80,9 +80,9 @@ def main():
         raw_client.open(params.output)
 
     if params.identifier:
-        records = oai_client.get_record(metadata_prefix=params.metadata_prefix, identifier=params.identifier)
+        records = oai_client.get_record(identifier=params.identifier)
     else:
-        records = oai_client.get_records(metadata_prefix=params.metadata_prefix, from_date=params.from_date, until_date=params.until_date)
+        records = oai_client.get_records(from_date=params.from_date, until_date=params.until_date)
 
     objects = []
 
