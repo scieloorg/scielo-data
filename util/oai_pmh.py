@@ -10,17 +10,22 @@ from requests.exceptions import HTTPError
 
 
 class OAIClient:
-    def __init__(self, url, source_name, max_retries=3):
+    def __init__(self, url, source_name, metadata_prefix=values.OAI_DC, max_retries=3):
+        self.url = url
         self.sickle = Sickle(url, max_retries=max_retries, verify=False)
-        self.sickle.class_mapping['ListRecords'] = SciELORecord
-        self.sickle.class_mapping['GetRecord'] = SciELORecord
+        self.metadata_prefix = metadata_prefix
+
+        if self.metadata_prefix == values.OAI_DC_SCIELO:
+            self.sickle.class_mapping['ListRecords'] = SciELORecord
+            self.sickle.class_mapping['GetRecord'] = SciELORecord
+        
         self.source_name = source_name
 
-    def get_record(self, metadata_prefix='oai_dc_scielo', identifier=None):
+    def get_record(self, identifier=None):
         if identifier:
-            return [self.sickle.GetRecord(**{'metadataPrefix': metadata_prefix, 'identifier': identifier})]
+            return [self.sickle.GetRecord(**{'metadataPrefix': self.metadata_prefix, 'identifier': identifier})]
 
-    def get_records(self, metadata_prefix='oai_dc_scielo', from_date='', until_date=''):
+    def get_records(self, from_date='', until_date=''):
         try:
             from_date = datetime.strptime(from_date, '%Y-%m-%d')
             until_date = datetime.strptime(until_date, '%Y-%m-%d')

@@ -65,7 +65,7 @@ def main():
 
     logging.basicConfig(level=params.logging_level, format='[%(asctime)s] %(levelname)s %(message)s', datefmt='%d/%b/%Y %H:%M:%S')
 
-    oai_client = OAIClient(url=params.oai_address, source_name=params.source_name, max_retries=params.max_retries)
+    oai_client = oai_pmh.OAIClient(url=params.oai_address, metadata_prefix=params.metadata_prefix, source_name=params.source_name, max_retries=params.max_retries)
   
     if params.storage_mode == 'database':
         # instancia client em modo de banco de dados
