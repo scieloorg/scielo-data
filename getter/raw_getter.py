@@ -71,7 +71,7 @@ def main():
         if not params.db_connection:
             raise exceptions.DatabaseConnectionUndefinedError("String de conexão de banco de dados indefinida.")
         raw_client = storage_impl.StorageClientDatabase()
-        raw_client.open(params.db_connection)
+        raw_client.open(params.db_connection, params.collection)
 
     elif params.storage_mode == 'json':
         # instancia client em modo de arquivo
