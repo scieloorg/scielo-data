@@ -98,7 +98,7 @@ docker run --rm \
   --storage_mode json \
   --oai_address http://old.scielo.br/oai/scielo-oai.php \
   --from_date 2020-04-01 \
-  --until_date 2020-05-01 \
+  --until_date 2020-05-01
 ```
 
 _Help_
@@ -144,5 +144,5 @@ See file [`resources/examples/raw_document.json`](resources/examples/raw_documen
 Variable | Default value
 ---------|--------------
 SCIELO_NW_BULK_SIZE|10
-SCIELO_NW_DB_CONNECTION|mongodb://user:pass@host:port/database.collection
+SCIELO_NW_DB_CONNECTION|mongodb://user:pass@host:port/database
 SCIELO_NW_LOGGING_LEVEL|INFO
