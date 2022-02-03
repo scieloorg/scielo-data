@@ -12,12 +12,14 @@ class SciELOHeader(Header):
     def __init__(self, header_element):
         super(Header, self).__init__(header_element, strip_ns=True)
         self.deleted = self.xml.attrib.get('status') == 'deleted'
+
         _identifier_element = self.xml.find('dc:identifier', self.xml.nsmap)
         _date_element = self.xml.find('date', self.xml.nsmap)
-
+        _is_part_of = self.xml.findall('dc:isPartOf', self.xml.nsmap)
+        
         self.identifier = getattr(_identifier_element, 'text', None)
         self.date = getattr(_date_element, 'text', None)
-        self.is_part_of = [isPartOf.text for isPartOf in self.xml.findall('dc:isPartOf', self.xml.nsmap)]
+        self.is_part_of = [isPartOf.text for isPartOf in _is_part_of]
 
     def __repr__(self):
         if self.deleted:
