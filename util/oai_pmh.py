@@ -35,32 +35,28 @@ class OAIClient:
         logging.info(f'Obtendo dados do período de {from_date.strftime("%Y-%m-%d")} a {until_date.strftime("%Y-%m-%d")}')
 
         try:
-            records = self.sickle.ListRecords(**{'metadataPrefix': metadata_prefix, 'from': from_date.strftime('%Y-%m-%d'), 'until': until_date.strftime('%Y-%m-%d')})
-        except NoRecordsMatch:
-            logging.info('No records found')
-            return []
-        except (
-            ConnectionError, 
-            ConnectionResetError, 
-            ConnectionAbortedError, 
-            ConnectionRefusedError, 
-            MaxRetryError, 
-            HTTPError,
-            TimeoutError,
-        ) as e:
-            logging.error(e)
-            return []
+            return self.sickle.ListRecords(
+                **{
+                    'metadataPrefix': self.metadata_prefix, 
+                    'from': from_date.strftime('%Y-%m-%d'), 
+                    'until': until_date.strftime('%Y-%m-%d')
+                }
+            )
+        
+        except oaiexceptions.CannotDisseminateFormat:
+            logging.error(f'Prefixo de metadados {self.metadata_prefix} inexistente no provedor {self.url}.')
+        
+        except oaiexceptions.NoRecordsMatch:
+            logging.info('Não foram encontrados registros.')
 
-        return records
+    def record_to_dict(self, record):
+        parsed_record = {}
 
-    def record_to_dict(self, record: SciELORecord):
-        object = {}
+        parsed_record['gathering_date'] = datetime.utcnow()
+        parsed_record['gathering_source'] = self.source_name
+        parsed_record['identifier'] = record.header.identifier
 
-        object['gathering_date'] = datetime.utcnow()
-        object['gathering_source'] = self.source_name
-        object['identifier'] = record.header.identifier
-        object['date'] = record.header.date
-        object['is_part_of'] = record.header.is_part_of
-        object['metadata'] = record.get_metadata().get('metadata', {})
+        self._parse_header(record.header, parsed_record)
+        self._parse_metadata(record.metadata, parsed_record)
 
-        return object
+        return parsed_record
