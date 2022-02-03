@@ -8,8 +8,6 @@ from util import exceptions, storage_impl, oai_pmh, values
 
 LOGGING = os.environ.get('SCIELO_NW_LOGGING_LEVEL', 'INFO')
 BULK_SIZE = int(os.environ.get('SCIELO_NW_BULK_SIZE', '10'))
-OAI_ADDRESS = os.environ.get('SCIELO_NW_OAI_ADDRESS', 'https://old.scielo.br/oai/scielo-oai.php')
-SOURCE_NAME = os.environ.get('SCIELO_NW_SOURCE_NAME', 'oai-scl')
 DB_CONNECTION = os.environ.get('SCIELO_NW_DB_CONNECTION', '')
 
 
