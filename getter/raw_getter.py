@@ -87,7 +87,10 @@ def main():
     objects = []
 
     for r in records:
-        objects.append(oai_client.record_to_dict(r))
+        logging.info(f'Registro {r.header.identifier} obtido')
+
+        parsed_record = oai_client.record_to_dict(r)
+        objects.append(parsed_record)
 
         if len(objects) == BULK_SIZE:
             raw_client.save(objects)
