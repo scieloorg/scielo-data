@@ -55,7 +55,7 @@ getter \
   --db_connection mongodb://user:pass@host:port/database \
   --oai_address http://old.scielo.br/oai/scielo-oai.php \
   --from_date 2020-04-01 \
-  --until_date 2020-05-01 \
+  --until_date 2020-05-01
 ```
 
 ```bash
@@ -70,7 +70,7 @@ docker run --rm \
   --db_connection mongodb://user:pass@host:port/database \
   --oai_address http://old.scielo.br/oai/scielo-oai.php \
   --from_date 2020-04-01 \
-  --until_date 2020-05-01 \
+  --until_date 2020-05-01
 ```
 
 _Command: example 2 - storage mode json_
@@ -125,13 +125,13 @@ optional arguments:
                         Data de processamento até a qual os dados serão considerados para coleta (formato YYYY-MM-DD)
   -u UNTIL_DATE, --until_date UNTIL_DATE
                         Data de processamento a partir da qual os dados serão coletados (formato YYYY-MM-DD)
-  -d DAYS_DELTA, --days_delta DAYS_DELTA
-                        Número de dias a ser considerado na coleta de dados - é útil quando um dos parâmetros from e until não é informado.
   -l {INFO,WARNING,DEBUG}, --logging_level {INFO,WARNING,DEBUG}
                         Modo de logging
   --storage_mode {database,json}
                         Modo de persistência dos dados coletados
-  --output OUTPUT       Caminho dos dados armazenados: uma string de conexão com banco de dados ou um caminho no disco
+  --db_connection DB_CONNECTION
+                        Uma string de conexão com banco de dados
+  --output OUTPUT       Um caminho no disco em que os dados serão armazenados
 ```
 
 ## Raw data format
@@ -146,5 +146,3 @@ Variable | Default value
 SCIELO_NW_BULK_SIZE|10
 SCIELO_NW_DB_CONNECTION|mongodb://user:pass@host:port/database.collection
 SCIELO_NW_LOGGING_LEVEL|INFO
-SCIELO_NW_OAI_ADDRESS|https://old.scielo.br/oai/scielo-oai.php
-SCIELO_NW_SOURCE_NAME|oai-scl
